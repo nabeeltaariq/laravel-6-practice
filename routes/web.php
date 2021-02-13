@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/questionaire', 'QuestionaireController@index')->name('questionaires');
+Route::get('/questionaire/create', 'QuestionaireController@create')->name('questionaires.create');
+Route::post('/questionaire', 'QuestionaireController@store')->name('questionaire');
