@@ -9,6 +9,9 @@
 
     <div class="card-body">
      {{$questionaire->title}}
+     <p>{{$questionaire->purpose}}</p>
+     <p>{{$questionaire->user_id}}</p>
+
     </div>
    </div>
   </div>
