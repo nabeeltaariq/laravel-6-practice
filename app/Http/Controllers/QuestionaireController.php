@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Questionaire;
 use Illuminate\Http\Request;
 
 class QuestionaireController extends Controller
@@ -17,6 +18,17 @@ class QuestionaireController extends Controller
 
     public function store()
     {
-        dd("stored");
+        $data = request()->validate([
+            "title" => "required",
+            "purpose" => "required",
+
+        ]);
+        $data["user_id"] = auth()->user()->id;
+        $questionaire = Questionaire::create($data);
+        return redirect('/questionaire/' . $questionaire->id);
+    }
+    public function show(\App\Questionaire $questionaire)
+    {
+        return view("questionaire.show", compact('questionaire'));
     }
 }

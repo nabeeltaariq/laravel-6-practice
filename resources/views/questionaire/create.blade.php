@@ -14,14 +14,21 @@
       @csrf
       <div class="form-group">
        <label for="title">Title </label>
-       <input name="title" type="Text" class="form-control" id="title" aria-describedby="TitleHelp" placeholder="Enter Title" required>
-       <small id="TitleHelp" class="form-text text-muted">Give your Questionaire a title that attracts.</small>
+       <input name="title" type="text" class="form-control" id="title" aria-describedby="TitleHelp" placeholder="Enter Title">
+       @error('title')
+
+       <small class=" text-danger">{{$message}}</small>
+       @enderror
       </div>
       <div class="form-group">
        <label for="purpose">Purpose </label>
-       <input name="purpose" type="Text" class="form-control" id="title" aria-describedby="TitleHelp" placeholder="Enter Purpose">
-       <small id="purpose" class="form-text text-muted">Please provide purpose of your questionaire.</small>
+       <input name="purpose" type="text" class="form-control" id="title" aria-describedby="TitleHelp" placeholder="Enter Purpose">
+       @error('purpose')
+
+       <small class=" text-danger">{{$message}}</small>
+       @enderror
       </div>
+
       <button type="submit" class="btn btn-dark">Submit</button>
      </form>
 
