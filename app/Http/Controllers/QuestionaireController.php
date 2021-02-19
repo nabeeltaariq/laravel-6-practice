@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class QuestionaireController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         return view("questionaire.index");
@@ -23,8 +27,8 @@ class QuestionaireController extends Controller
             "purpose" => "required",
 
         ]);
-        $data["user_id"] = auth()->user()->id;
-        $questionaire = Questionaire::create($data);
+        $questionaire = auth()->user()->questionaires()->create($data);
+
         return redirect('/questionaire/' . $questionaire->id);
     }
     public function show(\App\Questionaire $questionaire)
