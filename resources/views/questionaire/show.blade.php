@@ -11,6 +11,7 @@
      {{$questionaire->title}}
      <p>{{$questionaire->purpose}}</p>
      <p>{{$questionaire->user_id}}</p>
+     <a class="btn btn-dark" href={{route('question.create',['questionaireId'=>$questionaire->id])}}> Create Question</a>
 
     </div>
    </div>
