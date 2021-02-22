@@ -12,6 +12,14 @@ class QuestionController extends Controller
     }
     public function store(\App\Questionaire $questionaire)
     {
-        dd($questionaire);
+        $data = request()->validate([
+            'question.question' => 'required',
+            'answers.*.answer' => 'required',
+        ]);
+
+        $question = $questionaire->questions()->create($data['question']);
+        $question->answers()->createMany($data['answers']);
+
+        return redirect('/questionaire/' . $questionaire->id);
     }
 }

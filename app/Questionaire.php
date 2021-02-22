@@ -11,7 +11,7 @@ class Questionaire extends Model
     {
         return $this->belongsTo(\App\User::class);
     }
-    public function question()
+    public function questions()
     {
         return $this->hasMany(\App\Question::class);
     }
