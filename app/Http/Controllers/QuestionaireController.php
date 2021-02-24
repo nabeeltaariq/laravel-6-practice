@@ -13,7 +13,8 @@ class QuestionaireController extends Controller
     }
     public function index()
     {
-        return view("questionaire.index");
+        $questionaires = auth()->user()->questionaires;
+        return view("questionaire.index", compact('questionaires'));
     }
     public function create()
     {

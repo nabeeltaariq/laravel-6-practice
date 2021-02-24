@@ -23,18 +23,45 @@
       <ul class="list-group">
        @foreach($question->answers as $answer)
 
-       <li class="list-group-item"> <input type="radio" name="responses[{{$key}}][answer_id]" id="answer{{$answer->id}}" {{(old('responses.'.$key. '.answer_id')=== $answer->id ?  "checked" : "")}} class="mr-2" value="{{$answer->id}}">
-        {{$answer->answer}}
-        <input type="hidden" name="responses[{{$key}}][question_id]" value="{{$question->id}}">
+       <li class="list-group-item">
+        <input type="radio" name="responses[{{ $key }}][answer_id]" id="answer{{ $answer->id }}" {{ (old('responses.' . $key . '.answer_id') == $answer->id) ? 'checked' : '' }} class="mr-2" value="{{ $answer->id }}">
+        {{ $answer->answer }}
 
+        <input type="hidden" name="responses[{{ $key }}][question_id]" value="{{ $question->id }}">
        </li>
+       {{$answer->answer}}
+
+
        @endforeach
 
 
       </ul>
      </div>
      @endforeach
-     <button type="submit" class="btn btn-dark btn-block mr-3">Submit</button>
+     <div class="card mt-4">
+      <div class="card-header">Your Information</div>
+
+      <div class="card-body">
+       <div class="form-group">
+        <label for="name">Your Name</label>
+        <input name="survey[name]" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+        <small id="nameHelp" class="form-text text-muted">Hello! What's your name?</small>
+
+        @error('name')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
+       </div>
+
+       <div class="form-group">
+        <label for="email">Your Email</label>
+        <input name="survey[email]" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+        <small id="emailHelp" class="form-text text-muted">Your Email Please!</small>
+
+        @error('email')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
+       </div>
+       <button type="submit" class="btn btn-dark btn-block mr-3">Submit</button>
     </form>
 
 

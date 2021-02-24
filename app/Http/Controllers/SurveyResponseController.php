@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Survey;
+use App\SurveyResponse;
 use Illuminate\Http\Request;
 
-class SurveyController extends Controller
+class SurveyResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,43 +33,29 @@ class SurveyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Questionaire $questionaire)
+    public function store(Request $request)
     {
-
-
-
-        $data = request()->validate([
-            'responses.*.answer_id' => 'required',
-            'responses.*.question_id' => 'required',
-            'survey.name' => 'required',
-            'survey.email' => 'required|email',
-        ]);
-
-
-        $survey = $questionaire->surveys()->create($data['survey']);
-        $survey->responses()->createMany($data['responses']);
-        dd($survey);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Survey  $survey
+     * @param  \App\SurveyResponse  $surveyResponse
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Questionaire $questionaire, $slug)
+    public function show(SurveyResponse $surveyResponse)
     {
-        $questionaire->load("questions.answers");
-        return view('Survey.show', compact('questionaire'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Survey  $survey
+     * @param  \App\SurveyResponse  $surveyResponse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Survey $survey)
+    public function edit(SurveyResponse $surveyResponse)
     {
         //
     }
@@ -78,10 +64,10 @@ class SurveyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Survey  $survey
+     * @param  \App\SurveyResponse  $surveyResponse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Survey $survey)
+    public function update(Request $request, SurveyResponse $surveyResponse)
     {
         //
     }
@@ -89,10 +75,10 @@ class SurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Survey  $survey
+     * @param  \App\SurveyResponse  $surveyResponse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Survey $survey)
+    public function destroy(SurveyResponse $surveyResponse)
     {
         //
     }
