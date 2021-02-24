@@ -30,6 +30,14 @@
      <a class="btn btn-dark" href={{route('question.create',['questionaireId'=>$questionaire->id])}}> Create Question</a>
 
     </div>
+    <div class="card-footer">
+     <form action="/questions/{{$questionaire->id}}/questions/{{$question->id}}" method="post">
+
+      @method("DELETE")
+      @csrf
+      <button class="btn btn-sm btn-outline-danger">Delete Question</button>
+     </form>
+    </div>
    </div>
   </div>
  </div>

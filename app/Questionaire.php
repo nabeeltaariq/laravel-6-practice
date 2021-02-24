@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use illuminate\Support\Str;
 
 class Questionaire extends Model
 {
@@ -10,6 +11,10 @@ class Questionaire extends Model
     public function path()
     {
         return url('/questionaire/' . $this->id);
+    }
+    public function publicPath()
+    {
+        return url('/surveys/' . $this->id . "-" . Str::slug($this->title));
     }
     public function user()
     {

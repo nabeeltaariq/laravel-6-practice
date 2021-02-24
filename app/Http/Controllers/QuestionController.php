@@ -22,4 +22,11 @@ class QuestionController extends Controller
 
         return redirect('/questionaire/' . $questionaire->id);
     }
+    public function destroy($questionaireId,  \App\Question $question)
+    {
+
+        $question->answers()->delete();
+        $question->delete();
+        return redirect()->back();
+    }
 }

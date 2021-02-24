@@ -16,8 +16,6 @@
      <a href={{route('questionaires.create')}} class="btn btn-dark"> Create New Questionaire</a>
     </div>
     <div class="card-body mt-4">
-
-
      <ul class="list-group">
       @foreach($questionaires as $questionaire)
       <li class="list-group-item">
@@ -25,7 +23,18 @@
       </li>
       @endforeach
      </ul>
+     <div class="mt-4">
+      <p>Share Url </p>
+      <small>
+       <a href="{{$questionaire->publicPath()}}">
+        {{$questionaire->publicPath()}}
+       </a>
+      </small>
+
+
+     </div>
     </div>
+
    </div>
   </div>
  </div>

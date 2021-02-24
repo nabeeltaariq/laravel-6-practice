@@ -11,4 +11,9 @@ class Answer extends Model
     {
         return $this->belongsTo(\App\Question::class);
     }
+
+    public function responses()
+    {
+        return $this->hasMany(\App\SurveyResponse::class);
+    }
 }
